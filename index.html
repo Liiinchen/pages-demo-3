@@ -1,10 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>Hello World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>page starter</title>
+  <!-- Styling: Farben und Anordnung stehen in style.css. -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  Hello World
+  <div class="site">
+    <header class="header">
+      <nav class="nav">
+        <a class="brand" href="index.html">page starter</a>
+        <div class="burger" data-burger-root>
+          <button class="burgerBtn" type="button" aria-label="Menu" aria-expanded="false" data-burger-btn>
+            <span class="lines" aria-hidden="true"></span>
+          </button>
+          <div class="panel" hidden data-burger-panel>
+            <nav class="menu" aria-label="Seiten">
+              <!-- Seite: Neue Seite = Kopie dieser Datei plus ein weiterer Link hier, auf jeder Seite. -->
+              <a class="item" href="index.html">Lorem</a>
+            </nav>
+          </div>
+        </div>
+        <script>
+          (() => {
+            const root = document.currentScript?.previousElementSibling;
+            if (!(root instanceof HTMLElement)) return;
+            if (!root.matches("[data-burger-root]")) return;
+
+            const btn = root.querySelector("[data-burger-btn]");
+            const panel = root.querySelector("[data-burger-panel]");
+            if (!(btn instanceof HTMLButtonElement)) return;
+            if (!(panel instanceof HTMLElement)) return;
+
+            function close() {
+              panel.hidden = true;
+              btn.setAttribute("aria-expanded", "false");
+            }
+
+            function toggle() {
+              const open = panel.hidden;
+              panel.hidden = !open;
+              btn.setAttribute("aria-expanded", open ? "true" : "false");
+            }
+
+            btn.addEventListener("click", (e) => {
+              e.preventDefault();
+              toggle();
+            });
+
+            document.addEventListener("click", (e) => {
+              const t = e.target;
+              if (!(t instanceof Node)) return;
+              if (!root.contains(t)) close();
+            });
+
+            document.addEventListener("keydown", (e) => {
+              if (e.key === "Escape") close();
+            });
+          })();
+        </script>
+      </nav>
+    </header>
+    <main class="main">
+      <!-- Inhalt: Überschrift ersetzen. -->
+      <h1>Meine Webseite</h1>
+      <p>Willkommen auf meiner persönlichen Webseite.</p>
+      <h2>Übersicht</h2>
+      <ul>
+        <li>Über mich</li>
+        <li>Meine Projekte</li>
+        <li>Kontakt</li>
+      </ul>
+      <!-- Inhalt: Überschrift und Absatz ersetzen. -->
+      <h2>Meine Webseite</h2>
+      <p>Hier findest du Informationen zu meinen Projekten und Kontaktdaten.</p>
+      <hr>
+      <section class="cols" aria-label="Details">
+        <article class="col">
+          <!-- Inhalt: Bild hier hinein, als img in .imgWrap. Titel und Text ersetzen. -->
+          <div class="imgWrap"></div>
+          <div class="txt">
+            <p class="title"><strong>Über mich</strong></p>
+            <p class="body">Hier findest du kurze Informationen über mich.</p>
+          </div>
+        </article>
+        <article class="col">
+          <!-- Inhalt: Bild hier hinein, als img in .imgWrap. Titel und Text ersetzen. -->
+          <div class="imgWrap"></div>
+          <div class="txt">
+            <p class="title"><strong>Meine Projekte</strong></p>
+            <p class="body">Hier findest du eine Auswahl meiner Projekte.</p>
+          </div>
+        </article>
+        <article class="col">
+          <!-- Inhalt: Bild hier hinein, als img in .imgWrap. Titel und Text ersetzen. -->
+          <div class="imgWrap"></div>
+          <div class="txt">
+            <p class="title"><strong>Kontakt</strong></p>
+            <p class="body">Hier findest du meine Kontaktdaten.</p>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footerInner">
+        <span>© 2026 page starter</span>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
