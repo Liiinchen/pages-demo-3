@@ -1,10 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="utf-8">
-  <title>Hello World</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontakt</title>
+
+  <!-- Styling: Farben und Anordnung stehen in style.css. -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  Hello World
+  <div class="site">
+
+    <header class="header">
+      <nav class="nav">
+
+        <a class="brand" href="index.html">page starter</a>
+
+        <div class="burger" data-burger-root>
+          <button
+            class="burgerBtn"
+            type="button"
+            aria-label="Menu"
+            aria-expanded="false"
+            data-burger-btn
+          >
+            <span class="lines" aria-hidden="true"></span>
+          </button>
+
+          <div class="panel" hidden data-burger-panel>
+            <nav class="menu" aria-label="Seiten">
+
+              <!-- Seite: Menü auf jeder Seite gleich -->
+              <a class="item" href="index.html">Start</a>
+              <a class="item" href="projekt.html">Projekte</a>
+              <a class="item" href="kontakt.html">Kontakt</a>
+
+            </nav>
+          </div>
+        </div>
+
+        <script>
+          (() => {
+            const root = document.currentScript?.previousElementSibling;
+            if (!(root instanceof HTMLElement)) return;
+            if (!root.matches("[data-burger-root]")) return;
+
+            const btn = root.querySelector("[data-burger-btn]");
+            const panel = root.querySelector("[data-burger-panel]");
+
+            if (!(btn instanceof HTMLButtonElement)) return;
+            if (!(panel instanceof HTMLElement)) return;
+
+            function close() {
+              panel.hidden = true;
+              btn.setAttribute("aria-expanded", "false");
+            }
+
+            function toggle() {
+              const open = panel.hidden;
+              panel.hidden = !open;
+              btn.setAttribute("aria-expanded", open ? "true" : "false");
+            }
+
+            btn.addEventListener("click", (e) => {
+              e.preventDefault();
+              toggle();
+            });
+
+            document.addEventListener("click", (e) => {
+              const t = e.target;
+              if (!(t instanceof Node)) return;
+              if (!root.contains(t)) close();
+            });
+
+            document.addEventListener("keydown", (e) => {
+              if (e.key === "Escape") close();
+            });
+          })();
+        </script>
+
+      </nav>
+    </header>
+
+    <main class="main">
+
+      <!-- Inhalt: Überschrift ersetzen. -->
+      <h1>Kontakt</h1>
+
+      <!-- Inhalt: Absatz ersetzen. -->
+      <p>Hier findest du meine Kontaktdaten.</p>
+
+      <!-- Inhalt: Listeneinträge ersetzen. -->
+      <h2>Kontaktmöglichkeiten</h2>
+
+      <ul>
+        <li>E-Mail: beispiel@email.at</li>
+        <li>Telefon: +43 660 1234567</li>
+        <li>Ort: Wien</li>
+      </ul>
+
+      <!-- Inhalt: Überschrift und Absatz ersetzen. -->
+      <h2>Nachricht</h2>
+
+      <p>Du kannst mich bei Fragen oder Anliegen gerne kontaktieren.</p>
+
+      <hr>
+
+      <section class="cols" aria-label="Details">
+
+        <article class="col">
+
+          <!-- Inhalt: Bild hier hinein, als img in .imgWrap. Titel und Text ersetzen. -->
+          <div class="imgWrap"></div>
+
+          <div class="txt">
+            <p class="title"><strong>E-Mail</strong></p>
+            <p class="body">Schreibe mir eine Nachricht per E-Mail.</p>
+          </div>
+
+        </article>
+
+        <article class="col">
+
+          <!-- Inhalt: Bild hier hinein, als img in .imgWrap. Titel und Text ersetzen. -->
+          <div class="imgWrap"></div>
+
+          <div class="txt">
+            <p class="title"><strong>Telefon</strong></p>
+            <p class="body">Du kannst mich auch telefonisch erreichen.</p>
+          </div>
+
+        </article>
+
+        <article class="col">
+
+          <!-- Inhalt: Bild hier hinein, als img in .imgWrap. Titel und Text ersetzen. -->
+          <div class="imgWrap"></div>
+
+          <div class="txt">
+            <p class="title"><strong>Standort</strong></p>
+            <p class="body">Ich befinde mich in Wien.</p>
+          </div>
+
+        </article>
+
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footerInner">
+        <span>© 2026 page starter</span>
+      </div>
+    </footer>
+
+  </div>
 </body>
 </html>
