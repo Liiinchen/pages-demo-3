@@ -14,4 +14,4 @@ Anschließend die Datei index.html mit einem Doppelklick im Browser öffnen.
 https://liiinchen.github.io/pages-demo-3/
 
 ## Lizenz
-Dieses Projekt verwendet die MIT-Lizenz. Siehe LICENSE.
+Dieses Projekt verwendet die MIT-Lizenz. Siehe LICENSE
